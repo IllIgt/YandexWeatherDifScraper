@@ -51,9 +51,9 @@ class HttpProcessor(BaseHTTPRequestHandler):
                     target_file = json.load(target_json)
                     target_prediction = target_file[i]["prediction"]
                 percents = (int(current_prediction) - int(target_prediction))/(int(current_prediction)/100)
+                message_box.append("Prediction date {0} (Days passed {1}) differs by {2}%".format(target_date, i, percents))
             except Exception:
-                print("проблема с файлом")
-            message_box.append("Prediction date {0} (Days passed {1}) differs by {2}%".format(target_date, i, percents))
+                message_box.append("FileException")
             i+=1
         return (message_box)
             
